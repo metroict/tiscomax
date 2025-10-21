@@ -1,0 +1,202 @@
+<odoo>
+    <data noupdate="0">
+        <!-- only Advance Expense Request Templates-->
+        <!-- 1) Approver user get the submit advance expense mail notification  with the described details-->
+        <record id="submit_adv_expense_to_approver_mail_template" model="mail.template">
+            <field name="name">Submit the Expense Request To Approver : Send by email</field>
+            <field name="model_id" ref="hr_expense_advance_omax.model_advance_expense"/>
+            <field name="subject">{{ object.employee_id.name }} submitted the advance payment request for {{ object.product_id.name }}</field>
+            <field name="email_from">{{ user.partner_id.email }}</field><!-- ${object.get_login_user_email()}-->
+            <field name="email_to">{{ object.get_advance_expense_approver_email() }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 12px;">
+                        Hello Expense Approver,<br/><br/>
+                        <t t-out="object.employee_id.name or ''"/> has requested that you to preview and approve the advance payment request for <t t-out="object.product_id.name or ''"/> with the amount of <t t-out="object.requested_amount or ''"/> <t t-out="object.currency_id.symbol or ''"/>
+                        <br/><br/>
+                        Request Details :
+                        <br/>
+                        Number : <t t-out="object.name or ''"/>
+                        <br/>
+                        Employee : <t t-out="object.employee_id.name or ''"/>
+                        <br/>
+                        <t t-if="object.employee_id.department_id">
+                            Department : <t t-out="object.employee_id.department_id.name or ''"/>
+                        </t>
+                        <t t-else="">
+                            Department :
+                        </t>
+                        <br/>
+                        Requested Date : <t t-out="object.requested_date.strftime('%d/%m/%Y') or ''"/>
+                        <br/>
+                        Expense : <t t-out="object.product_id.name or ''"/>
+                        <br/>
+                        Requested Amount : <t t-out="object.requested_amount or ''"/><t t-out="object.currency_id.symbol or ''"/>
+                        <br/>
+                        Submitted Date : <t t-out="datetime.date.today().strftime('%d/%m/%Y') or ''"/>
+                        <br/>
+                        Submitted By : <t t-out="object.user_id.name or ''"/>
+                        <br/><br/>
+                        <!--Request Link: <a href="${object.get_portal_url()}"><t t-out="object.get_portal_url() or ''"></a>-->
+                        Request Link: <a t-attf-href="{{ object.get_portal_url() }}"><t t-out="object.get_portal_url() or ''"/></a>
+                        <!--<br/>
+                        Request Link: <a t-attf-href="/web?#id={{  object.id  }}&amp;view_type=form&amp;model=advance.expense"><t t-out="object.get_portal_url() or ''"/></a> -->
+                        <br/><br/>
+                        <br/><br/>
+                        Regards,<br/>
+                        <strong><t t-out="user.name"/></strong>
+                    </p>
+                </div>
+            </field>
+            <field name="lang">{{ object.user_id.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+        
+        <!-- 2) Expense Manager get the mail notification of approve with the described details-->
+        <record id="expense_manager_get_approve_adv_expn_mail_template" model="mail.template">
+            <field name="name">Approve Expense mail notification to Expense Manager: Send by email</field>
+            <field name="model_id" ref="hr_expense_advance_omax.model_advance_expense"/>
+            <field name="subject">{{ user.name }} approved the submitted advance payment request by {{ object.employee_id.name }} for {{ object.product_id.name }}</field>
+            <field name="email_from">{{ user.partner_id.email }}</field>
+            <field name="email_to">{{ object.get_expense_manager_email() }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 12px;">
+                        Hello Expense Manager,<br/><br/>
+                        <t t-out="object.employee_id.name or ''"/> has requested the advance payment request for <t t-out="object.product_id.name or ''"/> with the amount of <t t-out="object.requested_amount or ''"/> <t t-out="object.currency_id.symbol or ''"/>. So we approved this request on <t t-out="object.approved_date.strftime('%d/%m/%Y') or ''"/>. So kindly review and proceed with the payment.
+                        
+                        <br/><br/>
+                        Request Details :
+                        <br/>
+                        Number : <t t-out="object.name or ''"/>
+                        <br/>
+                        Employee : <t t-out="object.employee_id.name or ''"/>
+                        <br/>
+                        <t t-if="object.employee_id.department_id">
+                            Department : <t t-out="object.employee_id.department_id.name or ''"/>
+                        </t>
+                        <t t-else="">
+                            Department :
+                        </t>
+                        <br/>
+                        Requested Date : <t t-out="object.requested_date.strftime('%d/%m/%Y') or ''"/>
+                        <br/>
+                        Expense : <t t-out="object.product_id.name or ''"/>
+                        <br/>
+                        Requested Amount : <t t-out="object.requested_amount or ''"/><t t-out="object.currency_id.symbol or ''"/>
+                        <br/>
+                        Approved Date : <t t-out="datetime.date.today().strftime('%d/%m/%Y') or ''"/>
+                        <br/>
+                        Approved By : <t t-out="object.user_id.name or ''"/>
+                        <br/><br/>
+                        Request Link: <a t-attf-href="{{ object.get_portal_url() }}"><t t-out="object.get_portal_url() or ''"/></a>
+                        <br/><br/>
+                        <br/><br/>
+                        Regards,<br/>
+                        <strong><t t-out="user.name"/></strong>
+                    </p>
+                </div>
+            </field>
+            <field name="lang">{{ object.user_id.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+        
+        
+        <!-- 3) Reject expense mail notification to employee-->
+        <record id="reject_expense_mail_template" model="mail.template">
+            <field name="name">Reject Expense mail notification to Employee: Send by email</field>
+            <field name="model_id" ref="hr_expense_advance_omax.model_advance_expense"/>
+            <field name="subject">{{ user.name }} rejected the submitted advance payment request by {{ object.employee_id.name }} for {{ object.product_id.name }}</field>
+            <field name="email_from">{{ user.partner_id.email }}</field>
+            <field name="email_to">{{ object.employee_id.user_id.partner_id.email }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 12px;">
+                        Hello <t t-out="object.employee_id.name or ''"/>,<br/><br/>
+                        <t t-out="user.name or ''"/> has rejected the advance payment request for <t t-out="object.product_id.name or ''"/> with the amount of <t t-out="object.requested_amount or ''"/> <t t-out="object.currency_id.symbol or ''"/>. Kindly check the below details for the rejected reason.
+                        <br/><br/>
+                        Request Details :
+                        <br/>
+                        Number : <t t-out="object.name or ''"/>
+                        <br/>
+                        Employee : <t t-out="object.employee_id.name or ''"/>
+                        <br/>
+                        <t t-if="object.employee_id.department_id">
+                            Department : <t t-out="object.employee_id.department_id.name or ''"/>
+                        </t>
+                        <t t-else="">
+                            Department :
+                        </t>
+                        <br/>
+                        Requested Date : <t t-out="object.requested_date.strftime('%d/%m/%Y') or ''"/>
+                        <br/>
+                        Expense : <t t-out="object.product_id.name or ''"/>
+                        <br/>
+                        Requested Amount : <t t-out="object.requested_amount or ''"/><t t-out="object.currency_id.symbol or ''"/>
+                        <br/>
+                        Rejected Date : <t t-out="datetime.date.today().strftime('%d/%m/%Y') or ''"/>
+                        <br/>
+                        Rejected By : <t t-out="object.user_id.name or ''"/>
+                        <br/>
+                        Rejected Reason : <t t-out="object.get_rejected_reason() or ''"/>
+                        <br/><br/>
+                        Request Link: <a t-attf-href="{{ object.get_portal_url() }}"><t t-out="object.get_portal_url() or ''"/></a>
+                        <br/><br/>
+                        <br/><br/>
+                        Regards,<br/>
+                        <strong><t t-out="user.name"/></strong>
+                    </p>
+                </div>
+            </field>
+            <field name="lang">${object.user_id.partner_id.lang}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+        
+        <!-- 4) Due Date in Advanced Payment notification to employee-->
+        <record id="due_date_adv_payment_to_employee_mail_template" model="mail.template">
+            <field name="name">Due Date in Advanced Payment notification to Employee: Send by email</field>
+            <field name="model_id" ref="hr_expense_advance_omax.model_advance_expense"/>
+            <field name="subject">Please file Retirement</field>
+            <field name="email_from">{{ user.partner_id.email }}</field>
+            <field name="email_to">{{ object.employee_id.user_id.partner_id.email }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 12px;">
+                        Hello <t t-out="object.employee_id.name or ''">Employee</t>,<br/><br/>
+                        Please Take note that the <b><t t-out="object.name">Advance Expense</t></b> is yet to retired.
+                        <br/><br/>
+                        <br/><br/>
+                        Regards,<br/>
+                        <strong><t t-out="user.name"/></strong>
+                    </p>
+                </div>
+            </field>
+            <field name="lang">{{ user.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+        <!-- 5) Due Date in Advanced Payment notification to Approver-->
+        <record id="due_date_adv_payment_to_approver_mail_template" model="mail.template">
+            <field name="name">Due Date in Advanced Payment notification to Approver: Send by email</field>
+            <field name="model_id" ref="hr_expense_advance_omax.model_advance_expense"/>
+            <field name="subject">Please file Retirement</field>
+            <field name="email_from">{{ user.partner_id.email }}</field>
+            <field name="email_to">{{ object.approved_by_id.partner_id.email }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 12px;">
+                        Hello <t t-out="object.approved_by_id.name or ''">Approver</t>,<br/><br/>
+                        Please Take note that the <b><t t-out="object.name">Advance Expense</t></b> is yet to retired.
+                        <br/><br/>
+                        <br/><br/>
+                        Regards,<br/>
+                        <strong><t t-out="user.name"/></strong>
+                    </p>
+                </div>
+            </field>
+            <field name="lang">{{ user.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+        
+    </data>
+</odoo>

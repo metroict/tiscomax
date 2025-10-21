@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+		<record id="advance_expense_voucher_report_menu_id" model="ir.actions.report">
+            <field name="name">Advance Expense Voucher</field>
+            <field name="model">advance.expense</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">hr_expense_advance_omax.advance_expense_voucher_report</field>
+            <field name="report_file">hr_expense_advance_omax.advance_expense_voucher_report</field>
+            <field name="binding_model_id" ref="model_advance_expense"/>
+        </record>
+    </data>
+</odoo>

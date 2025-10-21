@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="view_download_adv_exp_report_form" model="ir.ui.view">
+        <field name="name">download.adv.exp.report.form</field>
+        <field name="model">download.adv.exp.report</field>
+        <field name="arch" type="xml">
+            <form >
+                <group>
+                    <field name="excel_file" readonly="1" filename="file_name"/>
+                    <field name="file_name" invisible="1"/>
+                </group>
+                <footer>
+                  <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Advance Expense Report -->
+    <record id="view_adv_exp_report_wizard_form" model="ir.ui.view">
+        <field name="name">adv.expense.report.wizard.form</field>
+        <field name="model">adv.expense.report.wizard</field>
+        <field name="arch" type="xml">
+            <form >
+                <group>
+                    <group>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="state"/>
+                        <field name="retired"/>
+                    </group>
+                    <group>
+                        <field name="department_id"/>
+                        <field name="job_id"/>
+                        <field name="employee_ids" widget="many2many_tags"/>
+                        <field name="product_ids" widget="many2many_tags"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Download" type="object" name="action_download_excel_report" class="oe_highlight"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_adv_exp_report_wizard" model="ir.actions.act_window">
+        <field name="name">Advance Expense Report</field>
+        <field name="res_model">adv.expense.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_adv_exp_report_wizard_form" />
+        <field name="target">new</field>
+    </record>
+    
+    <menuitem name="Advance Expense Report"
+        parent="menu_advance_expense_root"
+        id="menu_adv_exp_report_wizard"
+        sequence="30"
+        action="action_adv_exp_report_wizard"/>
+    
+</odoo>

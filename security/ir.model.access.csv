@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_advance_expense,access_advance_expense,model_advance_expense,,1,1,1,1
+access_adv_exp_request_reject,access_adv_exp_request_reject,model_adv_exp_request_reject,,1,1,1,1
+access_mass_advance_expense,access_mass_advance_expense,hr_expense_advance_omax.model_mass_advance_expense,,1,1,1,1
+access_mass_advance_expense_lines,access_mass_advance_expense_lines,hr_expense_advance_omax.model_mass_advance_expense_lines,,1,1,1,1
+
+hr_expense_advance_omax.access_download_adv_exp_report,access_download_adv_exp_report,hr_expense_advance_omax.model_download_adv_exp_report,,1,1,1,1
+hr_expense_advance_omax.access_adv_expense_report_wizard,access_adv_expense_report_wizard,hr_expense_advance_omax.model_adv_expense_report_wizard,,1,1,1,1
+

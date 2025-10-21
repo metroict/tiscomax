@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Advance Expense Request Tree view-->
+    <record id="advance_expense_request_tree_view" model="ir.ui.view">
+        <field name="name">advance.expense.tree</field>
+        <field name="model">advance.expense</field>
+        <field name="arch" type="xml">
+            <tree string="Advance Expense Request">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="department_id"/>
+                <field name="job_id"/>
+                <field name="requested_date"/>
+                <field name="product_id"/>
+                <field name="requested_amount"/>
+                <field name="user_id" string="Requested User"/>
+                <field name="company_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!--Advance Expense Request Form view-->
+    <record id="advance_expense_request_form_view" model="ir.ui.view">
+        <field name="name">advance.expense.form</field>
+        <field name="model">advance.expense</field>
+        <field name="arch" type="xml">
+            <form string="Advance Expense Request">
+                <header>
+                    <button name="action_submit" type="object" string="Submit" class="oe_highlight"  
+                            invisible="state != 'draft'"
+                            confirm="Are you sure you want Submit the Advance Expense Request?"/>
+                    <button name="action_approve" type="object" string="Approve" class="oe_highlight"  
+                            invisible="state != 'submitted'"
+                            confirm="Are you sure you want Approve the Advance Expense Request?"
+                            groups="hr_expense.group_hr_expense_team_approver"/>
+                    <button name="%(action_adv_exp_request_reject)d" type="action" string="Reject" 
+                            invisible="state != 'submitted'" class="oe_highlight"
+                            groups="hr_expense.group_hr_expense_team_approver"/>
+                    <button name="action_reset_draft" type="object" string="Reset To Draft" 
+                            class="oe_highlight" invisible="state != 'rejected'"
+                            confirm="Are you sure you want Reset to Draft the Advance Expense Request again?"/>
+                    <button name="action_pay" type="object" string="Register Payment" class="oe_highlight"
+                            invisible="state != 'approved'"  
+                            confirm="Are you sure you want Pay the Advance Expense Request?"
+                            groups="hr_expense.group_hr_expense_manager"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,paid"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="action_create_view_hr_expense"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-pencil-square-o"
+                            invisible="state != 'paid'"
+                            string="Submit Expense"
+                        />
+                    </div>
+                    <!--group string="Advance Expense Request"></group-->
+                    <div class="oe_title">
+                        <h2><field name="name" class="oe_inline"/></h2>
+                    </div>
+                    
+                    <group>
+                        <group name="g1">
+                            <field name="employee_id" readonly="state not in ['draft','submitted']" options="{'no_create': True}"/>
+                            <field name="department_id" options="{'no_create': True}"/>
+                            <field name="job_id" options="{'no_create': True}"/>
+                            <field name="company_id" options="{'no_create': True}"/>
+                            <field name="currency_id" options="{'no_create': True}"/>
+                        </group>
+                        <group name="g2">
+                            <field name="requested_date" readonly="state not in ['draft','submitted']"/>
+                            <field name="due_date" readonly="state not in ['draft','submitted']"/>
+                            <field name="product_id" readonly="state not in ['draft','submitted']" options="{'no_create': True}"/>
+                            <field name="requested_amount" readonly="state not in ['draft','submitted']"/>
+                            <field name="user_id" readonly="state not in ['draft','submitted']" options="{'no_create': True}"/>
+                            <field name="expense_approver_id" force_save="1"/>
+                            <field name="expense_id" force_save="1" invisible="1"/>
+                            <field name="expsense_state" invisible="0"/>
+                            <field name="retired" invisible="0"/>
+                            <field name="is_mass_expense" force_save="1" invisible="0"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="General Information" name="general">
+                            <group>
+                                <group name="on">
+                                    <field name="submitted_date"/>
+                                    <field name="approved_date"/>
+                                    <field name="paid_date"/>
+                                    <field name="rejected_date" invisible="state != 'rejected'"/>
+                                    <field name="rejected_reason" invisible="state != 'rejected'"/>
+                                </group>
+                                <group name="by">
+                                    <field name="submitted_by_id" options="{'no_create': True}"/>
+                                    <field name="approved_by_id" options="{'no_create': True}"/>
+                                    <field name="paid_by_id" options="{'no_create': True}"/>
+                                    <field name="rejected_by_id" invisible="state != 'rejected'"/>
+                                </group>
+                            </group>
+                            <field name="remarks" placeholder="Remark" readonly="state != 'draft'"/>
+                        </page>
+                        
+                        <page string="Accounting Information" name="account" groups="hr_expense.group_hr_expense_team_approver,account.group_account_manager">
+                            <group>
+                                <group>
+                                    <field name="account_journal_id" options="{'no_create': True}"/>
+                                    <field name="employee_account_id" options="{'no_create': True}"/>
+                                    <field name="cash_bank_account_id" options="{'no_create': True}"/>
+                                </group>
+                                <group>
+                                    <field name="account_move_id" options="{'no_create': True}"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="note" placeholder="Notes"/>
+                        </page>
+                        
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    
+    <!--Advance Expense Request search view-->
+    <record id="view_advance_expense_request_search_form" model="ir.ui.view">
+        <field name="name">advance.expense.search.form</field>
+        <field name="model">advance.expense</field>
+        <field name="arch" type="xml">
+           <search string="Advance Expense Request">
+                <field name="name" string="Name"/>
+                <field name="employee_id"/>
+                <field name="department_id"/>
+                <field name="job_id"/>
+                <field name="user_id" string="Requested User"/>
+                <field name="requested_date"/>
+                <field name="product_id"/>
+                <field name="requested_amount"/>
+                <field name="company_id"/>
+                <field name="state"/>
+                <field name="expsense_state"/>
+                <filter string="Mass Expense" name="is_mass_expense" domain="[('is_mass_expense','=',True)]"/>
+                <filter string="Retired" name="done" domain="[('expsense_state','=','done')]"/>
+                <filter string="Employee" name="employee_id" context="{'group_by':'employee_id'}"/>
+                <filter string="Requested User" name="user_id" context="{'group_by':'user_id'}"/>
+                <filter string="Expense" name="product_id" context="{'group_by':'product_id'}"/>
+                <filter string="Company" name="company_id" context="{'group_by':'company_id'}"/>
+                <filter string="Status" name="state" context="{'group_by':'state'}"/>
+            </search>
+        </field>
+    </record>
+    <!--Advance Expense Request Action-->
+    <record id="action_advance_expense_request" model="ir.actions.act_window">
+        <field name="name">Advance Expense Request</field>
+        <field name="res_model">advance.expense</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field><!-- ('user_id', '=', uid)-->
+        <field name="search_view_id" ref="view_advance_expense_request_search_form"/>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Payment Request
+            </p><p>
+                Use this menu to create Payment Request.
+            </p>
+        </field>
+    </record>
+    
+    <menuitem id="menu_advance_expense_root" name="Advance Expense" sequence="2" parent="hr_expense.menu_hr_expense_root" groups="base.group_user"/>
+    
+    <menuitem name="Advance Expense Request"
+        parent="menu_advance_expense_root"
+        id="menu_advance_expense_request"
+        sequence="10"
+        action="action_advance_expense_request"/>
+        
+</odoo>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div class="oe_styling_v8">
+		<br/>
+		<div style="background:#efefef; font-family:LatoOpen Sans !important; color:black;">
+			<section class="oe_container oe_dark">
+				<div style="border-top:#252E64 solid 10px;"></div>
+				<div class="oe_row oe_spaced">
+				<center>
+				<span class="btn btn-sm mb-2 mb-lg-0" style="font-size:14px; font-weight:500; background-color:#159bd7; color:#fff"> Supported for</span>
+                        <span class="btn btn-sm mb-2 mb-lg-0" style="font-size:14px; font-weight:500; background-color:#252E64; color:#fff"><i class="fa fa-check"></i> Enterprise</span>
+                        <span class="btn btn-sm mb-2 mb-lg-0" style="font-size:14px; font-weight:500; background-color:#252E64; color:#fff"><i class="fa fa-check"></i> Odoo.sh</span>
+                    </center>
+                    <br/>
+				    <h1 style="padding-top: 0%;font-weight: 1000;color: #252e64 !important;margin-bottom:18px;">
+	                    <center>Employee Advance Expense</center><br/>
+	                </h1>
+	                
+				    <center><div style="width: 50%; border-top:#252E64 solid 10px;"></div></center>
+				    <div class="oe_slogan" style="margin:5px 0 !important;">
+                        <a href="https://www.omaxinformatics.com" target="new">
+                            <img src="omax.png" style="width: 190px; margin-bottom: 0px;" class="center-block">
+                            <!--img src="odoo_learning_partner_rgb.png" style="width: 190px; margin-bottom: 0px;" class="center-block"-->
+                        </a>
+                    </div>
+				    
+				</div>
+				<div style="border-top:#252E64 solid 10px;"></div>
+			</section>
+			<section class="oe_container">
+			    <div class="oe_row oe_spaced">
+			        <h2 class="oe_slogan" style="font-size:30px;"><b><u>Overview</u></b></h2>
+			        <p style="font-size: 30px;">
+			           This App allows employees to create <b>advance expenses requests</b>
+			        </p>
+			    </div>
+		    </section>
+		    
+		    <section class="oe_container ">
+			    <div class="oe_row oe_spaced">
+				    <h2 class="oe_slogan" style="font-size:30px;"><b><u>Features</u></b></h2>
+				    <div style="font-size: 25px;">
+					    <ul class="list-unstyled mr32 ml32">
+					        <li><i class="fa fa-check" style="color: #252E64;">Employee create advance expense request.</i></li>
+					        <li><i class="fa fa-check" style="color: #252E64;">Approver can Approve or Reject</i></li>
+					        
+					        <li><i class="fa fa-check" style="color: #252E64;">Once employee has been paid for advance expense then Journal entry created.</i></li>
+					        <li><i class="fa fa-check" style="color: #252E64;">Employee can submit actual expense agaist the advance expense.</i></li>
+					        <li><i class="fa fa-check" style="color: #252E64;">Employee will not be able to submit another advance expense if any pending advance expense is not retired.</i></li>
+					        <li><i class="fa fa-check" style="color: #252E64;">Configuration available to bypass above restriction for specific employee.</i></li>
+					        <li><i class="fa fa-check" style="color: #252E64;">Expense Admin can allocate mass advance expense entries for multiple employees.</i></li>
+					        <li><i class="fa fa-check" style="color: #252E64;">Download pdf report of Advance Expense from tree/form view.</i></li>
+					        <li><i class="fa fa-check" style="color: #252E64;">Download excel report of Advance Expense from 'Advance Expense Report' wizard.</i></li>
+					        <li><i class="fa fa-check" style="color: #252E64;">Multiple filter options available in 'Advance Expense Report' wizard.</i></li>
+					        <li><i class="fa fa-check" style="color: #252E64;">Auto send Reminder for retirement mail to employee and approval based on configuration.</i></li>
+					        
+                            <i class="fa fa-check" style="color: #252E64;">Please check below instructions and Video for more Details</i></i></li>
+                        </ul>
+				    </div>
+			    </div>
+		    </section>
+		    <div style="width:75%;margin-left:13%;text-align:center;">
+		        <h2 class="oe_slogan" style="font-size:30px;font-weight:bold">Video for all the features</h2>
+		        <a href="https://youtu.be/nX-8l3nWSBg" target="new">
+                    <img border="0" alt="Omax Informatics" src="video_icon.png">
+                </a>
+		    </div>
+	        <section class="oe_container">
+			    <div>
+			        <h2 class="oe_slogan" style="font-size:30px;"><b><u>How It Works</u></b></h2>
+                    <div class="oe_bg_img">
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Advance Expense Request Menu.</p>
+                        <center>
+                            <img src="1.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/><br/>
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Advance Expense Request form.</p>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Employee and Requested User auto set based on login user.</p>
+                        <center>
+                            <img src="2.png" style="width:100%;border:5px solid #252E64;">
+                            <br/>
+                            <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Expense Approver auto set based on employee.</p>
+                            <img src="2_1.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/><br/>
+
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Submit Advance Expense.</p>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Once submit then Submitted Date and Submitted By auto set value </p>
+                        <center>
+                            <img src="3.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Once submit then auto send mail to Approval</p>
+                        <center>
+                            <img src="3_1.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Once submit then Approver can see Approve and Reject buttons</p>
+                        <center>
+                            <img src="3_2.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/><br/>
+
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Approve Advance Expense.</p>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Once approve then values of 'Approved Date' and 'Approved By' are auto set </p>
+                        <center>
+                            <img src="4.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Once approved then auto send mail to Expense Manager(Expense Administrator)</p>
+                        <center>
+                            <img src="4_1.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Once approved then Expense Manger can see 'Register Payment' button</p>
+                        <center>
+                            <img src="4_2.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/><br/>
+                        
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Register Payment of Advance Expense.</p>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Approver click Register Payment and not set accounting detail then raise warning.</p>
+                        <center>
+                        <img src="5.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/>
+                        
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Approver click Register Payment then open confirmation msg popup and then click ok then it will be paid.</p>
+                        <center>
+                        <img src="5_1.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Once Paid then auto set Paid date and Paid By and Submit Expense button visible.</p>
+                        <center>
+                            <img src="5_2.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/><br/>
+
+                        </center>
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Submit Expense warning.</p>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Requested User and Login user are different and try to submit expense then raise warning.</p>
+                        <center>
+                        <img src="6.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/><br/>
+
+                        </center>
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Submit Expense.</p>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">This details is auto fill in Expense.</p>
+                        <center>
+                        <img src="7.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/><br/>
+
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Submited Expense not paid and try to create new Advance Expense then raise warning.</p>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">This warning not work in Mass Advance Expense.</p>
+                        <center>
+                        <img src="8.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/><br/>
+
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;"> Allowed Create Advance Even Retirement is Pending Configuration.</p>
+                        <center>
+                        <img src="9.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/><br/>
+
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Now warning is bypass and employee can create Advance Expense.</p>
+                        <center>
+                        <img src="10.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/><br/>
+
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Retired in Advance expense.</p>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;"> Now paid remaining expense.</p>
+                        <center>
+                        <img src="11.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Once paid Expense then related Advance Expense is Retired.</p>
+                        <center>
+                        <img src="11_1.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/><br/>
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Retired filter in Advance expense tree view.</p>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">User can easily track records which are Advance Expenses and Expense both are paid.</p>
+                        <center>
+                        <img src="12.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/><br/>
+
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Mass Advance Expense menu.</p>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Only Expense Manager(Expense Administrator) able to show menu.</p>
+                        <center>
+                        <img src="13.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/><br/>
+                        
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Mass Advance Expense wizard.</p>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">User can create multiple Advance Expense at same time.</p>
+                        <center>
+                        <img src="14.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/><br/>
+
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Mass Advance Expense Records.</p>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Created records have Mass Expense tick.</p>
+                        <center>
+                        <img src="15.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">User can use 'Mass Expense' filter to track those records.</p>
+                        <center>
+                        <img src="16.png" style="width:100%;border:1px solid #252E64;">
+                        <img src="16_1.png" style="width:100%;border:1px solid #252E64;">
+                        </center>
+                        <br/><br/>
+
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Advance Expense Voucher Report.</p>
+                        <center>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Print Menu.</p>
+                        <img src="17.png" style="width:100%;border:5px solid #252E64;">
+                        <br/>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Report.</p>
+                        <img src="17_1.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/><br/>
+                        
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Advance Expense Report Menu.</p>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Multile filters available in wizard.</p>
+                        <center>
+                        <img src="18.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/><br/>
+                        
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Advance Expense Report wizard.</p>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Multile filters available in wizard.</p>
+                        <center>
+                        <img src="19.png" style="width:100%;border:5px solid #252E64;">
+                        </center>
+                        <br/><br/>
+
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Advance Expense Report.</p>
+                        <center>
+                        <img src="20.png" style="width:100%;border:1px solid #252E64;">
+                        <img src="20_1.png" style="width:100%;border:1px solid #252E64;">
+                        </center>
+                        <br/><br/>
+
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Reminder of Retirement configuration.</p>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Assign days after due date to send reminder email to Employee and Approver.</p>
+                        <center>
+                        <img src="21.png" style="width:100%;border:1px solid #252E64;">
+                        </center>
+                        <br/><br/>
+
+                        <p style="font-size:25px;text-align:center;color:#252E64;font-weight:bold;">Reminder of Retirement Mail.</p>
+                        
+                        <center>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Record.</p>
+                        <img src="22.png" style="width:100%;border:1px solid #252E64;"><br/><br/>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Email to Approver.</p>
+                        <img src="22_1.png" style="width:100%;border:1px solid #252E64;"><br/><br/>
+                        <p style="font-size:18px;text-align:center;color:#252E64;font-weight:bold;">Email to Employee.</p>
+                        <img src="22_2.png" style="width:100%;border:1px solid #252E64;">
+                        </center>
+                        <br/><br/>
+                    </div>
+                </div>
+		    </section>
+		    
+		    <section class="oe_container ">
+			    <div class="oe_row oe_spaced">
+				    <h2 class="oe_slogan" style="font-size:30px;"><b><u>Free Support</u></b></h2>
+				    <div style="font-size: 16px;">
+					    <ul class="list-unstyled mr32 ml32">
+                            <center>You will get <b>30 Days</b> free support incase any bugs or issue (Except data recovery).</center><br/>
+                        </ul>
+				    </div>
+			    </div>
+		    </section>
+		    <section class="oe_container ">
+			    <div class="oe_row oe_spaced">
+				    <h2 class="oe_slogan" style="font-size:30px;"><b><u>Get In Touch</u></b></h2>
+				    <div style="border-top:#252E64 solid 10px;"></div>
+				    <div class="oe_slogan" style="margin-top:10px !important;">
+                        <a href="https://www.omaxinformatics.com" target="new">
+                            <img src="omax.png" style="width: 190px; margin-bottom: 20px;" class="center-block">
+                            <!--img src="odoo_learning_partner_rgb.png" style="width: 190px; margin-bottom: 20px;" class="center-block"-->
+                        </a>
+                    </div>
+                    <div class="oe_slogan" style="margin-top:10px !important;">
+                        <a class="btn btn-primary btn-lg mt8" style="color: #FFFFFF !important; background-color: #252E64;"
+                           target="new" href="https://www.youtube.com/@omaxinformatics7137/videos">
+                            <i class="fa fa-check-square"></i> Video Tutorial
+                        </a>
+                        <a class="btn btn-primary btn-lg mt8" style="color: #FFFFFF !important; background-color: #252E64;"
+                           target="new"
+                           href="https://apps.odoo.com/apps/modules/browse?order=Best+Sellers&search=OMAX+Informatics">
+                            <i class="fa fa-binoculars"></i> More Apps
+                        </a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table" cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tbody>
+		                        <tr>
+			                        <td colspan="2" style="font-size:16px; font-weight:bold;" width="100%" align="center">
+			                            <span class="fa fa-certificate fa-1x"> Our Odoo Services</span>
+			                        </td>
+		                        </tr>
+					        </tbody>
+                        </table>
+                        <table class="table" cellpadding="0" cellspacing="0" border="0" width="100%">
+					        <tbody>
+						        <tr>
+							        <td style="background-color: #252E64; color:white; border-radius: 15px; font-weight: bold;"><center><span class="fa fa-globe fa-1x"> Implementation</span></center></td>
+							        <td style="background-color: #252E64; color:white; border-radius: 15px; font-weight: bold;"><center><span class="fa fa-globe fa-1x"> Development</span></center></td>
+							        <td style="background-color: #252E64; color:white; border-radius: 15px; font-weight: bold;"><center><span class="fa fa-globe fa-1x"> Customization</span></center></td>
+							        <td style="background-color: #252E64; color:white; border-radius: 15px; font-weight: bold;"><center><span class="fa fa-globe fa-1x"> Migration</span></center></td>
+						        </tr>
+						        <tr>
+							        <td style="background-color: #252E64; color:white; border-radius: 15px; font-weight: bold;"><center><span class="fa fa-globe fa-1x"> Integration</span></center></td>
+							        <td style="background-color: #252E64; color:white; border-radius: 15px; font-weight: bold;"><center><span class="fa fa-globe fa-1x"> Training</span></center></td>
+							        <td style="background-color: #252E64; color:white; border-radius: 15px; font-weight: bold;"><center><span class="fa fa-globe fa-1x"> Support</span></center></td>
+							        <td style="background-color: #252E64; color:white; border-radius: 15px; font-weight: bold;"><center><span class="fa fa-globe fa-1x"> Hire Developer</span></center></td>
+						        </tr>
+					        </tbody>
+				        </table>
+                        <br/>
+                        <table class="table" cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tbody>
+		                        <tr>
+			                        <td colspan="2" style="font-size:16px; font-weight:bold;" width="100%" align="center">
+			                            <span class="fa fa-certificate fa-1x"> For support, query and question contact us.</span>
+			                        </td>
+		                        </tr>
+					        </tbody>
+                        </table>
+                        <table class="table" cellpadding="0" cellspacing="0" border="0" width="100%">
+					        <tbody>
+						        <tr>
+							        <td style="background-color: #252E64; color:white; border-radius: 15px; font-weight: bold;"><center><span class="fa fa-envelope fa-1x"> omaxinformatics@gmail.com</span></center></td>
+							        <td style="background-color: #252E64; color:white; border-radius: 15px; font-weight: bold;"><center><span class="fa fa-globe fa-1x"> www.omaxinformatics.com</span></center></td>
+						        </tr>
+					        </tbody>
+				        </table>
+                    </div>
+                    <br/>
+                    <div style="border-top:#252E64 solid 10px;"></div>
+			    </div>
+		    </section>
+		    <section class="oe_container ">
+			    <div class="oe_row oe_spaced">
+				    <h2 class="oe_slogan" style="font-size:30px; color:#252E64"><b>Thank you for visiting</b></h2>
+			    </div>
+		    </section>
+		</div>
+	</div>
+</body>
+</html>

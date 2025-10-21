@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Mass Advance Expense Creation Wizard -->
+    <record id="view_mass_adv_exp_form" model="ir.ui.view">
+        <field name="name">mass.advance.expense.form</field>
+        <field name="model">mass.advance.expense</field>
+        <field name="arch" type="xml">
+            <form >
+                <field name="mass_advance_lines" nolable="1">
+                    <tree editable="bottom">
+                        <field name="mass_wiz_id" invisible="1"/>
+                        <field name="employee_id"/>
+                        <field name="product_id"/>
+                        <field name="amount"/>
+                        <field name="note"/>
+                    </tree>
+                    <form>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="product_id"/>
+                            <field name="amount"/>
+                            <field name="note"/>
+                        </group>
+                    </form>
+                </field>
+                <footer>
+                    <button string="Create" type="object" name="mass_advance_expense" class="oe_highlight"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_mass_advance_expense" model="ir.actions.act_window">
+        <field name="name">Mass Advance Expense</field>
+        <field name="res_model">mass.advance.expense</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_mass_adv_exp_form" />
+        <field name="target">new</field>
+    </record>
+    
+    
+    <menuitem name="Mass Advance Expense"
+        parent="hr_expense_advance_omax.menu_advance_expense_root"
+        id="menu_mass_advance_expense_request"
+        sequence="11"
+        action="action_mass_advance_expense"
+        groups="hr_expense.group_hr_expense_manager"/>
+        
+</odoo>

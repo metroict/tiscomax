@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="advance_expense_voucher_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="hr_expense_advance_omax.advance_expense_voucher_report_tmpl_id"/> 
+                <!-- t-lang="doc.partner_id.lang" -->
+            </t>
+        </t>
+    </template>
+
+    <template id="advance_expense_voucher_report_tmpl_id">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <!-- company logo and name -->
+                    <t t-if="not o" t-set="o" t-value="doc"/>
+                    <t t-if="not company">
+                        <!-- Multicompany -->
+                        <t t-if="company_id">
+                            <t t-set="company" t-value="company_id"/>
+                        </t>
+                        <t t-elif="o and 'company_id' in o">
+                            <t t-set="company" t-value="o.company_id.sudo()"/>
+                        </t>
+                        <t t-else="else">
+                            <t t-set="company" t-value="res_company"/>
+                        </t>
+                    </t>
+                    <!-- finish company logo and name -->
+                    <div class="oe_structure"/>
+                    <center>
+                        <strong><span style="font-size: 35px;">Advance Expense Voucher</span></strong>
+                    </center>
+                    <br/>
+                    <div class="row">
+                        <table width="100%" class="table"> <!-- table-sm-->
+                            <tbody>
+                                <tr>
+                                    <td style="background-color: #262F64 !important; color:rgba(255,255,255,1)!important; font-weight:bold; border: none;" width="25%">
+                                        <span>Number</span>
+                                    </td>
+                                    <td style="border: none;" width="25%">
+                                        <span t-field="doc.name"/> 
+                                    </td>
+                                    <td style="background-color: #262F64 !important; color:rgba(255,255,255,1)!important; font-weight:bold; border: none;" width="25%">
+                                        <span>Requested Date</span>
+                                    </td>
+                                    <td style="border: none;" width="25%">
+                                        <span t-field="doc.requested_date"/> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #262F64 !important; color:rgba(255,255,255,1)!important; font-weight:bold; border: none;">
+                                        <span>Employee</span>
+                                    </td>
+                                    <td style="border: none;">
+                                        <span t-field="doc.employee_id.name"/> 
+                                    </td>
+                                    <td style="background-color: #262F64 !important; color:rgba(255,255,255,1)!important; font-weight:bold; border: none;">
+                                        <span>Due date</span>
+                                    </td>
+                                    <td style="border: none;">
+                                        <span t-field="doc.due_date"/> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #262F64 !important; color:rgba(255,255,255,1)!important; font-weight:bold; border: none;">
+                                        <span>Department</span>
+                                    </td>
+                                    <td style="border: none;">
+                                        <span t-field="doc.department_id.name"/> 
+                                    </td>
+                                    <td style="background-color: #262F64 !important; color:rgba(255,255,255,1)!important; font-weight:bold; border: none;">
+                                        <span>Company</span>
+                                    </td>
+                                    <td style="border: none;">
+                                        <span t-field="doc.company_id.name"/> 
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <table width="100%" class="table"> <!-- table-sm-->
+                            <tbody>
+                                <tr>
+                                    <td style="background-color: #262F64 !important; color:rgba(255,255,255,1)!important; font-weight:bold; border: none;" width="25%">
+                                        <span>Expense</span>
+                                    </td>
+                                    <td style="background-color: #262F64 !important; color:rgba(255,255,255,1)!important; font-weight:bold; border: none;" width="25%">
+                                        <span>Requested Amount</span>
+                                    </td>
+                                    <td style="background-color: #262F64 !important; color:rgba(255,255,255,1)!important; font-weight:bold; border: none;" width="25%">
+                                        <span>Currency</span>
+                                    </td>
+                                    <td style="background-color: #262F64 !important; color:rgba(255,255,255,1)!important; font-weight:bold; border: none;" width="25%">
+                                        <span>Expense Status</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: none;">
+                                        <span t-field="doc.product_id.display_name"/> 
+                                    </td>
+                                    <td style="border: none;">
+                                        <span t-field="doc.requested_amount"/> 
+                                    </td>
+                                    <td style="border: none;">
+                                        <span t-field="doc.currency_id.name"/> 
+                                    </td>
+                                    <td style="border: none;">
+                                        <span t-field="doc.expsense_state"/> 
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>        
+                    <div class="row" t-if="doc.note">
+                        <br/><br/>
+                        <strong>Notes: </strong><span t-field="doc.note"/>
+                    </div>
+                    <br/><br/><br/>
+                    <br/><br/><br/>
+                    <br/><br/><br/>
+                    <div id="general_info" class="row mt32 mb32" style="font-weight:bold; border: none;">
+                        <!-- background-color: #262F64 !important; color:rgba(255,255,255,1)!important; -->
+                        <div class="col-auto col-6 mw-100 mb-2" name="submitted_by_id">
+                            <img t-if="doc.submitted_by_id.sign_signature" t-att-src="image_data_uri(doc.submitted_by_id.sign_signature)" style="max-height: 70px;max-width: 210px;" alt="Signature"/>
+                            <div class="col-6" style="border-bottom: 1px solid black;"/><br/>
+                            <strong>Submitted By:</strong><span class="m-0" t-field="doc.submitted_by_id.name"/><!--p></p-->
+                            <t t-if="doc.submitted_by_id">
+                                <p class="m-0" t-field="doc.submitted_date"/>
+                                <p t-esc="doc.get_job_id(doc.submitted_by_id)" class="m-0"/>
+                            </t>
+                        </div>
+                        <div class="col-auto col-6 mw-100 mb-2" name="submitted_by_id">
+                            <t t-if="doc.approved_by_id">
+                                <t t-if="doc.approved_by_id.sign_signature">
+                                    <img t-if="doc.approved_by_id.sign_signature" t-att-src="image_data_uri(doc.approved_by_id.sign_signature)" style="max-height: 70px;max-width: 210px;" alt="Signature"/>
+                                </t>
+                                <t t-else="">
+                                    <div  style="height: 70px;width: 210px;"><span>&amp;nbsp;</span></div>
+                                </t>
+                            </t>
+                            
+                            <div class="col-6" style="border-bottom: 1px solid black;"/><br/>
+                            <strong>Approved By:</strong><span class="m-0" t-field="doc.approved_by_id.name"/>
+                            <t t-if="doc.approved_by_id"><p class="m-0" t-field="doc.approved_date"/>
+                                <p t-esc="doc.get_job_id(doc.approved_by_id)" class="m-0"/>
+                            </t>
+                        </div>
+                    </div>
+                    
+				    
+                </div>
+            </t>
+    </template>
+</odoo>

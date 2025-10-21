@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Advance Expense Request Reject Form View -->
+    <record id="view_adv_exp_req_reject_form" model="ir.ui.view">
+        <field name="name">adv.exp.request.reject.form</field>
+        <field name="model">adv.exp.request.reject</field>
+        <field name="arch" type="xml">
+            <form >
+                <group string="Reject Reason">
+                    <field name="rejected_reason" nolable="1" placeholder="Reject reason goes here..."/>
+                </group>
+                <footer>
+                    <button string="Proceed" type="object" name="action_reject_reson" class="oe_highlight"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_adv_exp_request_reject" model="ir.actions.act_window">
+        <field name="name">Reject Outdoor</field>
+        <field name="res_model">adv.exp.request.reject</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_adv_exp_req_reject_form" />
+        <field name="target">new</field>
+    </record>
+    
+</odoo>

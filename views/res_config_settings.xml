@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="advance_expense_duedate_reminder_settings" model="ir.ui.view">
+        <field name="name">duedate.advance.expese</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="hr_expense.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@name='expenses_setting_container']/setting[@id='expense_extract_settings']" position="after">
+                <setting id="reminder_days" help="Days after due date to send reminder email for Advance expense">
+                    <field name="reminder_days"/>
+                    <div class="mt8">
+                        <button name="action_view_due_date_adv_payment_to_employee_mail_tmpl" icon="fa-arrow-right" type="object" string="Configure Email Template to Employee" class="btn-link"/>
+                        <button name="action_view_due_date_adv_payment_to_approver_mail_tmpl" icon="fa-arrow-right" type="object" string="Configure Email Template to Approver" class="btn-link"/>
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+        
+</odoo>
